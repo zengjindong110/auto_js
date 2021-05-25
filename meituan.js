@@ -146,12 +146,10 @@ function return_go_to_water_list() {
                 // 在未知页面返回到进入app的页面再进入到任务列表
                 
                 back();back();sleep(1000);
-              
                 
                     if (get_image_coordinates("song_shu.jpg")) {
                         log("第五种场景点击get_water_list.jpg到任务列表页面")
                         is_click("get_water_list.jpg")
-                        
                         return true
                     } else {
                         // 有弹框就关闭弹框
