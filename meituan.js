@@ -153,7 +153,6 @@ function return_go_to_water_list() {
                         return true
                     } else {
                         // 有弹框就关闭弹框
-        
                         log("第六种场景点击get_water_list.jpg到任务列表页面")
                         is_click("xiao_bai_xx.jpg"); sleep(2000)
                         is_click("bai_xx.jpg"); sleep(2000)
