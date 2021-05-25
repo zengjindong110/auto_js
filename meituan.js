@@ -94,25 +94,78 @@ function return_go_to_water_list() {
     log("**开始执行进入任务列表页面**")
     if (get_image_coordinates("mei_ri_lai_ling.jpg")) { log("return_go_to_water_list当前页面**每日任务列表**"); return true }
     else {
-          
-        if(String(className("android.widget.Image").text("").findOne(2000)).substring(0, 37)=="com.stardust.automator.UiObject@bb24f"){''
-        if (get_image_coordinates("song_shu.jpg")) {
-            
-            is_click("get_water_list.jpg")
-            log("点击get_water_list.jpg到任务列表页面")
-            return true
-        } else {
-            // 有弹框就关闭弹框
-            
-                log("return_go_to_water_list正在尝试清空主页面弹框")
+           
+        if (className("android.widget.Image").text("").findOne(2000)) {
+            // 在首页没有任何弹框进入任务列表
+            if (get_image_coordinates("song_shu.jpg")) {
+                log("第一种场景点击get_water_list.jpg到任务列表页面")
+                is_click("get_water_list.jpg")
+                
+                return true
+            } else {
+                // 在首页有弹框就关闭弹框再进入任务列表
+
+                log("第二种场景点击get_water_list.jpg到任务列表页面")
                 is_click("xiao_bai_xx.jpg"); sleep(2000)
                 is_click("bai_xx.jpg"); sleep(2000)
                 is_click("hong_xx.jpg"); sleep(2000)
-                
-            
+
+
                 is_click("get_water_list.jpg")
-                log("点击get_water_list.jpg到任务列表页面")
+               
                 return true
+
+            }
+        }else{
+            if(text("免费领水果").findOne(1000)){
+
+                // 在打开app页面进入任务列表
+                text("免费领水果").findOne(1000).click();sleep(3000);
+                if (get_image_coordinates("song_shu.jpg")) {
+                    
+                    log("第三种场景点击get_water_list.jpg到任务列表页面")
+                    is_click("get_water_list.jpg")
+                    
+                    return true
+                } else {
+                    // 在打开app页面进入任务列表前有弹框
+    
+                    log("第四种场景点击get_water_list.jpg到任务列表页面")
+                    is_click("xiao_bai_xx.jpg"); sleep(2000)
+                    is_click("bai_xx.jpg"); sleep(2000)
+                    is_click("hong_xx.jpg"); sleep(2000)
+    
+    
+                    is_click("get_water_list.jpg")
+                   
+                    return true
+    
+                }
+
+            }else{
+                // 在未知页面返回到进入app的页面再进入到任务列表
+                
+                back();back();sleep(1000);
+              
+                
+                    if (get_image_coordinates("song_shu.jpg")) {
+                        log("第五种场景点击get_water_list.jpg到任务列表页面")
+                        is_click("get_water_list.jpg")
+                        
+                        return true
+                    } else {
+                        // 有弹框就关闭弹框
+        
+                        log("第六种场景点击get_water_list.jpg到任务列表页面")
+                        is_click("xiao_bai_xx.jpg"); sleep(2000)
+                        is_click("bai_xx.jpg"); sleep(2000)
+                        is_click("hong_xx.jpg"); sleep(2000)
+                        is_click("get_water_list.jpg")
+                     
+                        return true
+        
+                    }
+    
                 
             }
         }
@@ -141,6 +194,7 @@ function go_free_fruit() {
 
     if (go_free_fruit_button) {
         go_free_fruit_button.click()
+        log("进入天天领水果页面")
         className("android.widget.Image").findOne()
     }
     else {
@@ -253,12 +307,13 @@ function liu_lan_5s() {
         for (i = 0; i < 7; i++) {
 
             sleep(2000); is_click("xiao_bai_xx.jpg"); sleep(2000); back()
-  
+
 
             sleep(2000);
-             if (get_image_coordinates("liu_lan_qi_ta.jpg")){
-            is_click("liu_lan_qi_ta.jpg"); sleep(1500); is_click("que_ding_button.jpg");}
-            else{
+            if (get_image_coordinates("liu_lan_qi_ta.jpg")) {
+                is_click("liu_lan_qi_ta.jpg"); sleep(1500); is_click("que_ding_button.jpg");
+            }
+            else {
                 break
             }
         }
@@ -266,7 +321,7 @@ function liu_lan_5s() {
     }
     else {
         return_go_to_water_list()
-        log("没有进入**意商品随机放送1-50g**活动页面");return false 
+        log("没有进入**意商品随机放送1-50g**活动页面"); return false
     }
     return_go_to_water_list()
 }
@@ -503,7 +558,8 @@ function main() {
 
 // a = className("android.widget.Image").text("").findOne(2000)
 
-log(String(className("android.widget.Image").text("").findOne(2000)).substring(0, 37)=="com.stardust.automator.UiObject@bb24f")
 
+return_go_to_water_list()
+// log(String(className("android.widget.Image").text("").findOne(2000)))
 // log(currentActivity())
 // log(id("GameCanvas").findOne(2000))
