@@ -117,10 +117,10 @@ function return_go_to_water_list() {
 
             }
         }else{
-            if(text("免费领水果").findOne(1000)){
+            if(desc("免费领水果").findOne(1000)){
 
                 // 在打开app页面进入任务列表
-                text("免费领水果").findOne(1000).click();sleep(3000);
+                desc("免费领水果").findOne(1000).click();sleep(4000);
                 if (get_image_coordinates("song_shu.jpg")) {
                     
                     log("第三种场景点击get_water_list.jpg到任务列表页面")
@@ -301,7 +301,7 @@ function liu_lan_5s() {
         log("进入**任意商品随机放送1-50g**活动页面")
         for (i = 0; i < 7; i++) {
 
-            sleep(2000); is_click("xiao_bai_xx.jpg"); sleep(2000); back()
+            sleep(2000); is_click("xiao_bai_xx.jpg"); sleep(4000); back()
 
 
             sleep(2000);
@@ -436,32 +436,28 @@ function guo_yuan_yu_le() {
     sleep(2000)
     if (get_image_coordinates("mei_ri_lai_ling.jpg")) {
         sleep(2000); is_click("guo_yuan_yu_le_xx.jpg");
-        return true
+       
     }
     sleep(2000);
     if (get_image_coordinates("song_shu.jpg")) {
-        sleep(2000); is_click("guo_yuan_yu_le.jpg");
-
-    }
-    sleep(2000)
-    if (!get_image_coordinates("song_shu.jpg")) {
-        log("进入到了**去抽奖**活动页面")
-        sleep(2000); is_click("qu_chou_jiang.jpg");
+        sleep(2000); is_click("guo_yuan_yu_le.jpg");sleep(2000);
+        is_click("qu_chou_jiang.jpg");
         sleep(2000);
         if (get_image_coordinates("chou_jiang.jpg")) {
             for (i = 0; i < 10; i++) {
+                sleep(2000);
                 is_click("chou_jiang.jpg"); sleep(2000);
                 is_click("que_ding_button.jpg"); sleep(2000)
             }
             is_click("hong_xx.jpg")
-        }
-        else {
+        } else {
             log('抽奖的任务已经完成了')
         }
-        // back();sleep(2000);
-        // return_go_to_water_list();sleep(2000);go_get_water()
 
     }
+   sleep(2000);go_get_water()
+
+    
 }
 //每日浇水10次活动
 function jiao_shui() {
@@ -547,14 +543,4 @@ function main() {
     log("****所有任务执行完成****")
 
 }
-// liu_lan_5s(); sleep(1500);
-// log(go_get_water())
-
-
-// a = className("android.widget.Image").text("").findOne(2000)
-
-
-main()
-// log(String(className("android.widget.Image").text("").findOne(2000)))
-// log(currentActivity())
-// log(id("GameCanvas").findOne(2000))
+guo_yuan_yu_le(); sleep(1500)
