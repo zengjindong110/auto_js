@@ -187,7 +187,7 @@ function go_free_fruit() {
     log("准备打开美团")
     launch('com.sankuai.meituan')
 
-    go_free_fruit_button = desc("免费领水果").findOne(5000);
+    go_free_fruit_button = desc("免费领水果").findOne(3000);
 
     if (go_free_fruit_button) {
         go_free_fruit_button.click()
@@ -197,16 +197,14 @@ function go_free_fruit() {
     else {
 
         is_click("hong_xx.jpg"); sleep(2000)
-        go_free_fruit_button = desc("免费领水果").findOne(5000);
+        go_free_fruit_button = desc("免费领水果").findOne(3000);
         if (go_free_fruit_button) {
             go_free_fruit_button.click()
             className("android.widget.Image").findOne()
             log("进入免费领水果主页面")
         }
     }
-    if (desc("免费领水果").findOne(10000)) {
-        exit()
-    }
+   
 }
 
 // 点击去领取，获取水滴
@@ -556,7 +554,7 @@ function main() {
 // a = className("android.widget.Image").text("").findOne(2000)
 
 
-return_go_to_water_list()
+main()
 // log(String(className("android.widget.Image").text("").findOne(2000)))
 // log(currentActivity())
 // log(id("GameCanvas").findOne(2000))
