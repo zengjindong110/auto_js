@@ -130,6 +130,7 @@ function Watering() {
 
 
 function clik_yazi() {
+    
     for (i = 0; i < 5; i++){
     for (i = 0; i < 5; i++) { click_text("7327bce4ab558979") }
     sleep(6000)
@@ -163,17 +164,6 @@ function main() {
 
 }
 // click_text("86b551d1155595c3")
-// main()
-// click_text("喊它回来")
-// while (!text("领水滴").findOne(3000)) {
-//     log("准备返回到任务列表")
-//     sleep(2000);
-//     back(); if (click_text("去领取")){sleep(3000)};
-// }
-a = text("7327bce4ab558979").findOne(3000)
-// log(a)
-log(typeof(a))
-log(JSON.stringify(a))
-log(222,JSON.parse(JSON.stringify(a)))
-log(1111,a.boundsInScreen)
+main()
+
 
